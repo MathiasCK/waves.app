@@ -6,6 +6,7 @@ import data from './data';
 import Libary from './components/Libary';
 import Nav from './components/Nav';
 
+
 function App() {
    // Ref
    const audioRef = useRef(null);
@@ -53,7 +54,7 @@ function App() {
         <Nav libaryStatus={libaryStatus} setLibaryStatus={setLibaryStatus} />
         <Song currentSong={currentSong} isPlaying={isPlaying} />
         <Player setSongs={setSongs} setCurrentSong={setCurrentSong} songs={songs} setSongInfo={setSongInfo} songInfo={songInfo} audioRef={audioRef} currentSong={currentSong} isPlaying={isPlaying} setIsPlaying={setIsPlaying} />
-        <Libary setIsPlaying={setIsPlaying} libaryStatus={libaryStatus} setSongs={setSongs} audioRef={audioRef} songs={songs} setCurrentSong={setCurrentSong} isPlaying={isPlaying} />
+        <Libary setLibaryStatus={setLibaryStatus} setIsPlaying={setIsPlaying} libaryStatus={libaryStatus} setSongs={setSongs} audioRef={audioRef} songs={songs} setCurrentSong={setCurrentSong} isPlaying={isPlaying} />
         <audio onEnded={songEndHandler} onTimeUpdate={timeUpdateHandler} onLoadedMetadata={timeUpdateHandler} ref={audioRef} src={currentSong.audio}></audio>
       </div>
     );

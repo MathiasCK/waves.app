@@ -1,9 +1,16 @@
-import React from 'react';
+import React, { useRef } from 'react';
+import useClickOutside from '../hooks/useClickOutside';
 import LibarySong from './LibarySong';
 
-const Libary = ({songs, setCurrentSong, audioRef, isPlaying, setSongs, libaryStatus, setIsPlaying}) => {
+const Libary = ({songs, setCurrentSong, audioRef, isPlaying, setSongs, libaryStatus, setIsPlaying, setLibaryStatus}) => {
+    const libaryRef = useRef(null);
+    useClickOutside(libaryRef, () => {
+        if (libaryStatus) {
+            setLibaryStatus(false);
+        }
+    });
     return(
-        <div className={`libary ${libaryStatus ? 'active-libary' : ""}`} >
+        <div ref={libaryRef} className={`libary ${libaryStatus ? 'active-libary' : ""}`} >
             <h2>Libary</h2>
             <div className="libary-songs">
                 {songs.map((song) => (
